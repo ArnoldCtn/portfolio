@@ -4,259 +4,464 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hero</title>
+    <title>Portfolio | ArnoldCtn</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    
     <style>
-        body{
-            font-family: Georgia, 'Times New Roman', Times, serif
-        }
-        .navbar-open{
-            /* height: 500px; */
-            /* top:7%; */
-            left:0;
-            border-top-left-radius:80px;
-            border-bottom-right-radius:80px;
-            padding:40px;
-            padding-top: 80px;
-            transition: all 0.3s ease-in;
-            width: 50%;
-            height:100%
-            
-               
-        }
-        /* Make navbar sticky */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+        body {
+            font-family:Georgia, 'Times New Roman', Times, serif, Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
         }
 
-        .hide{
-                opacity: 0;
-                transition: all 1s;
-                filter: blur(15px);
-                /* transform: translate(-10%); */
-            }
+        /* Smooth reveal transitions */
+        .hide {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(10px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.show{
-    opacity: 1;
-      /* transform: translate(0); */
-      filter: blur(0);
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
 
-}
+        /* Stagger delays for child elements */
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
 
-.about1:nth-child(2){
-transition-delay: 150ms;
-}
-
-.service1:nth-child(3){
-transition-delay: 180ms;
-
-}
-
-.service1:nth-child(4){
-transition-delay: 200ms;
-
-}
-        
+        /* Custom scrollbar for an enhanced presentation profile */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
     </style>
-     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
 </head>
 
-<body class="bg-gradient-to-t from-[#0277BD] to-[#B3E5FC] min-h-screen">
-    <div class="sticky-nav bg-gradient-to-r from-[#4FC3F7] to-[#01579B] rounded-tr-full rounded-bl-full">
-        <nav id="navbar" class=" flex justify-between w-[100%] text-white px-10 py-2 max-h-40 ">
-            <div class="my-auto">
-            <h1 class=" text-[40px] md:text-[53px] my-auto cursor-pointer hover:scale-110 hover:text-blue-800 font-bold ml-3">My Portfolio</h1>
-            </div>
+<body class="bg-gradient-to-b from-slate-950 via-blue-700 to-slate-500 sm:h-screen text-slate-100 min-h-screen selection:bg-blue-600 selection:text-white">
 
-<div class="flex md:gap-3 lg:gap-10 gap-5">
-            <div class="my-auto md:static absolute left-[-100%] top-[7%] md:min-h-fit min-h-[48vh] md:bg-transparent bg-[#B3E5FC]  w-full md:w-auto" id="nav-menu">
-            <ul class="flex md:flex-row flex-col md:gap-7 lg:gap-11 gap-8 md:text-[19px] lg:text-[27px] font-extrabold">
-                <li> <a class="hover:text-gray-300 hover:pt-2" href="#">Home</a></li>
-                <li> <a class="hover:text-gray-300 hover:pt-2" href="#info">Info</a></li>
-                <li> <a class="hover:text-gray-300 hover:pt-2" href="#aboutME">About Us</a></li>
-                <li> <a class="hover:text-gray-300 hover:pt-2" href="#ContactME">Contact Us</a></li>
-                
-            </ul>
-            </div>
+    <!-- Sticky Navigation Bar -->
+    <header id="navbar" class="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-md border-b border-blue-900/40 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            
+            <!-- Logo Section -->
+            <a href="#home" class="group flex items-center gap-2">
+                <h1 class="text-2xl md:text-3xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-sky-400 group-hover:from-sky-400 group-hover:to-blue-500 transition duration-300">
+                    My Portfolio
+                </h1>
+            </a>
 
-            <div class="my-auto">
-                <img src="{{asset('images/clint.jpg')}}" alt=""  class="size-11 rounded-full bg-gray-800 hover:scale-105 cursor-pointer shadow-2xl">
-            </div>
+            <!-- Menu Links & Profile Wrapper -->
+            <div class="flex items-center gap-6">
+                <!-- Navigation Drawer -->
+                <div id="nav-menu" class="fixed top-[72px] left-[-100%] w-[75%] h-[calc(100vh-72px)] bg-slate-900/95 backdrop-blur-lg p-8 transition-all duration-300 ease-in-out border-r border-blue-900/50 md:static md:w-auto md:h-auto md:bg-transparent md:p-0 md:border-none flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-8 lg:gap-12">
+                    <ul class="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-10 text-lg md:text-base lg:text-lg font-semibold tracking-wide w-full md:w-auto">
+                        <li><a class="block py-2 text-slate-300 hover:text-blue-400 transition" href="#home">Home</a></li>
+                        <li><a class="block py-2 text-slate-300 hover:text-blue-400 transition" href="#info">Info</a></li>
+                        <li><a class="block py-2 text-slate-300 hover:text-blue-400 transition" href="{{ route('projects.all') }}">Projects</a></li>
+                        <li><a class="block py-2 text-slate-300 hover:text-blue-400 transition" href="#aboutME">About Me</a></li>
+                        <li><a class="block py-2 text-slate-300 hover:text-blue-400 transition" href="#ContactME">Contact Me</a></li>
+                    </ul>
+                </div>
 
+                <!-- User Profile Headshot Container -->
+                <div class="relative group">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-sky-500 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
+                    <img src="{{asset('images/clint.jpg')}}" alt="Avatar" class="relative size-10 rounded-full object-cover border border-slate-900 cursor-pointer">
+                </div>
 
-                <button id="menu-toggle" aria-label="Toggle menu" class="cursor-pointer bg-transparent hover:rounded-md hover:bg-transparent hover:border-1 my-auto  md:hidden">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 ">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-</svg>
-
+                <!-- Ionicons Driven Hamburger Trigger -->
+                <button id="menu-toggle" aria-label="Toggle menu" class="text-4xl text-blue-400 hover:text-sky-300 cursor-pointer focus:outline-none md:hidden flex items-center justify-center">
+                    {{-- <ion-icon id="menu-icon" name="menu-outline"></ion-icon> --}}
+                     <svg id="menu-icon" name="menu-outline" width="40" height="40" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="21" height="1.5" rx=".75" fill="white"/>
+                                <rect x="8" y="6" width="13" height="1.5" rx=".75" fill="white"/>
+                                <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="white"/>
+                            </svg>
                 </button>
             </div>
-
-            
-                
-
         </nav>
-    </div>
-    {{-- main part --}}
-    <main class=" space-y-20 md:space-y-0 " id="home">
-{{-- main section  --}}
-        <div id="info" class="hide min-h-screen flex flex-col justify-center items-center text-center  gap-5 rounded">
-            <h1 class="text-4xl md:text-7xl lg-text-9xl font-extrabold ">I'm A Rising Web And Mobile Developer </h1>
-            <p class="text-2xl md:text-4xl lg-text-6xl">I Design Modern, User-Friendly Websites and Applications</p>
-            <button class="rounded-full bg-gradient-to-r from-[#4FC3F7] to-[#01579B] p-5 hover:bg-transparent cursor-pointer w-35 md:w-50  hover:border-blue-500 hover:text-[18px] hover:bg-gradient-to-r hover:from-[#e2e6e8] hover:to-[#161616]">Hire me</button>
-        </div>
+    </header>
 
-        {{-- About US  --}}
+    <!-- Main Content Area Container Ecosystem -->
+    <main class="max-w-7xl mx-auto px-6 " id="home">
 
-        <div id="aboutME" class=" hide min-h-screen items-center flex md:flex-row flex-col justify-center md:space-y-0 space-y-0 md:gap-30 gap-15 sm:pb-70 pb-0">
-            {{-- img container  --}}
-            <div class="about1 hide md:mx-0 mx-10">
-            <img src="{{asset('images/yohan.jpg')}}"  alt="" class=" rounded-4xl md:h-130 md:w-160 w-100 h-120 hover:scale-x-110">
+        <!-- Hero / Info Section Frame -->
+        <section id="info" class="hide min-h-[calc(100vh-72px)] flex flex-col justify-center items-center text-center gap-6 py-12">
+            <span class="text-blue-400 text-sm md:text-base font-bold tracking-widest uppercase bg-blue-950/60 px-4 py-1.5 rounded-full border border-blue-800/60">
+                Available for Freelance & Contracts
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight max-w-5xl leading-tight">
+                I'm A Rising <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400">Web & Mobile</span> <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-blue-400">FullStack</span> Developer
+            </h1>
+            <p class="text-slate-400 text-lg sm:text-xl md:text-2xl max-w-2xl font-light">
+                I Design Modern, Fluid, and User-Friendly Websites and Applications.
+            </p>
+            <div class="mt-4">
+                <a href="#ContactME" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-base font-bold text-white rounded-full group bg-gradient-to-br from-blue-600 to-sky-500 group-hover:from-blue-600 group-hover:to-sky-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-800 transition">
+                    <span class="relative px-8 py-3.5 transition-all ease-in duration-75 bg-slate-950 rounded-full group-hover:bg-opacity-0">
+                        Hire Me Now
+                    </span>
+                </a>
             </div>
-            <div class="about1 hide flex flex-col gap-15 md:w-[30%] w-auto md:mx-0 mx-10 items-center">
-                <h1 class=" md:text-6xl text-5xl text-blue-100 text-center font-extrabold">About Me</h1>
-                <h2 class="text-3xl md:text-4xl text-gray-600">Front-End And Backend Web And Mobile Developer</h2>
-                <p class="md:text-3xl text-2xl">I Am Rising And Passionate Developer whose Aim Is To Build Modern, User Friendly and Useful Websites And Applications. I Am Cameroonian and Aiming to Brng the Flag More And More Higher </p>
-                    <button class=" rounded-4xl p-6 bg-[#01579B] w-64  hover:bg-blue-400 hover:border-blue-400 "><a href="#ContactME">Contact Me</a></button>
+        </section>
+
+        <!-- About Me Section Frame -->
+        <section id="aboutME" class="hide min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 py-20">
+            <!-- Image Frame -->
+            <div class="about1 w-full max-w-md lg:max-w-lg relative group shrink-0">
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600 to-sky-500 rounded-3xl blur opacity-40 group-hover:opacity-70 transition duration-500"></div>
+                <div class="relative overflow-hidden rounded-2xl border border-blue-900/50">
+                    <img src="{{asset('images/yohan.jpg')}}" alt="About Me Workstation" class="w-full h-[320px] sm:h-[400px] object-cover transform transition-transform duration-700 group-hover:scale-105">
+                </div>
             </div>
-        </div>
-
-        {{-- MY SERVICES  --}}
-        <div class="hide  min-h-screen  items-center flex flex-col justify-center md:pb-50 pb-0">
-            <h1 class="md:text-6xl text-5xl text-blue-800 text-center font-extrabold pb-15">My Services</h1>
-
-            <div class=" grid md:grid-cols-3 gap-6 mx-6 md:mx-10 text-white w-full">
-                 <div class="service1 hide p-4 bg-[#01579B] shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-6 space-y-5 h-72 max-h-90 overflow-hidden hover:scale-105 hover:border-blue-500 hover:border-4" >
-                    <h2 class="text-2xl md:text-3xl text-blue-400 font-extrabold pt-2">HTML DEVELOPMENT</h2>
-                    <p class=" text-lg md:text-2xl">Clean and Responsive HTML5 websites.</p>
-                </div>
-                 {{-- <div class="service1 hide p-4 bg-[#01579B] shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-6 space-y-5 h-80 max-h-90 overflow-hidden hover:scale-y-115 hover:border-blue-500 hover:border-4" >
-                    <h2 class="text-3xl  text-blue-400 font-extrabold pt-5">TailwindCss DEVELOPMENT</h2>
-                    <p class=" text-2xl">Beautiful, Responsive UI using Css,TailwindCSs</p>
-                </div> --}}
-                 <div class="service1 hide p-4 bg-[#01579B] shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-6 space-y-5 h-72 max-h-90 overflow-hidden hover:scale-105 hover:border-blue-500 hover:border-4" >
-                    <h2 class="text-2xl md:text-3xl text-blue-400 font-extrabold pt-2">Laravel X TailwindCSS DEVELOPMENT</h2>
-                    <p class=" text-lg md:text-2xl">Beautiful, Responsive UI using TailwindCSS and secure Laravel backend logic.</p>
-                </div>
-                 <div class="service1 hide p-4 bg-[#01579B] shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-6 space-y-5 h-72 max-h-90 overflow-hidden hover:scale-105 hover:border-blue-500 hover:border-4" >
-                    <h2 class="text-2xl md:text-3xl text-blue-400 font-extrabold pt-2">React Native DEVELOPMENT</h2>
-                    <p class=" text-lg md:text-2xl">Beautiful, Responsive Mobile UIs built with React Native.</p>
-                </div>
-                
-              
-            </div>
-        </div>
-
-        {{-- //jobs --}}
-
-        <div class="hide  min-h-screen  items-center flex flex-col justify-center md:pb-50 pb-0">
-            <h1 class="md:text-6xl text-5xl text-blue-800 text-center font-extrabold pb-15">My Projects</h1>
-        
-            <div class=" grid md:grid-cols-3 gap-6 mx-6 md:mx-10 w-full text-white ">
-             <a href="{{ route('project.show', 1) }}" class="service1 group hide block p-4 shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-4 space-y-4 h-72 overflow-hidden bg-[#01579B] hover:scale-105 hover:border-blue-500 hover:border-4 transition">
-                <div class="about1 mx-auto">
-                    <img src="{{asset('images/yohan.jpg')}}"  alt="Recipe App" class=" rounded-2xl md:h-44 md:w-64 w-full h-36 object-cover">
-                </div>
-                <div class="bg-red-500 rounded-2xl text-center items-center py-2">
-                 <p class="md:text-2xl text-xl text-blue-100 text-center font-extrabold ">Recipe app</p>
-                </div>
-            </a>
-                
-             <a href="{{ route('project.show', 2) }}" class="service1 group hide block p-4 shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-4 space-y-4 h-72 overflow-hidden bg-[#01579B] hover:scale-105 hover:border-blue-500 hover:border-4 transition" >
-                <div class="about1 mx-auto">
-                    <img src="{{asset('images/clint.jpg')}}"  alt="Portfolio Site" class=" rounded-2xl md:h-44 md:w-64 w-full h-36 object-cover">
-                </div>
-                <div class="bg-red-500 rounded-2xl text-center items-center py-2">
-                 <p class="md:text-2xl text-xl text-blue-100 text-center font-extrabold ">Portfolio Site</p>
-                </div>
-            </a>
-
-             <a href="{{ route('project.show', 3) }}" class="service1 group hide block p-4 shadow-2xl flex flex-col border-1  rounded-3xl text-center justify-center py-4 space-y-4 h-72 overflow-hidden bg-[#01579B] hover:scale-105 hover:border-blue-500 hover:border-4 transition" >
-                <div class="about1 mx-auto">
-                    <img src="{{asset('images/yohan.jpg')}}"  alt="Mobile App" class=" rounded-2xl md:h-44 md:w-64 w-full h-36 object-cover">
-                </div>
-                <div class="bg-red-500 rounded-2xl text-center items-center py-2">
-                 <p class="md:text-2xl text-xl text-blue-100 text-center font-extrabold ">Mobile App</p>
-                </div>
-            </a>
-        
-                 
-                
-                
-              
-            </div>
-        </div>
-        
-
-        {{-- contact ME --}}
-        
-        <div id="ContactME" class="hide h-screen  flex flex-col justify-center gap-15">
-            <h1 class="md:text-6xl text-5xl text-blue-800 text-center font-extrabold">Contact Me</h1>
             
-            <div class="flex md:flex-row flex-col-reverse items-center justify-center space-x-16  md:gap-0 gap-20">
-                <div class="flex flex-col items-center md:mx-0 mx-auto space-y-90">
-                    <form action="" class=" space-y-6 mx-10 text-white text-[17px]">
-                        @csrf
-                        
-                    <input type="text" name="" id="" placeholder="Enter Name" class="p-6 border-2 border-blue-500 rounded-3xl w-[100%] bg-[#01579B] outline-blue-400">
-                    <input type="email" name="" id="" placeholder="Enter Email" class="p-6 border-2 border-blue-500 rounded-3xl w-[100%] bg-[#01579B] outline-blue-400">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Your Message" class="p-6 border-2 border-blue-500 rounded-3xl w-[100%] bg-[#01579B] outline-blue-400"></textarea>
-                
-                    <button class=" rounded-4xl p-5 bg-[#01579B] hover:bg-blue-400 mb-5 w-64  hover:border-blue-500"><a href="#ContactME">Contact Me</a></button>
-                    
-                </form>
-                    
-                </div>
-                <div class="flex flex-col space-y-5 text-white text-2xl">
-                <p class="p-6  border-2 border-blue-500 rounded-3xl w-100 bg-[#4FC3F7] "><strong class=" text-blue-800">Email:</strong>arnoldctn@gmail.com</p>
-                <p class="p-6 border-2 border-blue-500 rounded-3xl w-100 bg-[#4FC3F7]"><strong class=" text-blue-800">Tel:</strong>+237-696-69-29-61</p>
-                <p class="p-6 border-2 border-blue-500 rounded-3xl w-100 bg-[#4FC3F7]"><strong class=" text-blue-800">Location</strong>Cameroon</p>
+            <!-- Text Content Frame -->
+            <div class="about1 flex flex-col gap-6 max-w-xl text-center lg:text-left items-center lg:items-start">
+                <h2 class="text-3xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-200">
+                    About Me
+                </h2>
+                <h3 class="text-xl sm:text-2xl font-semibold text-sky-400">
+                    Full-Stack Web & Mobile Engineer
+                </h3>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                    I am a rising and passionate developer whose aim is to build modern, highly performant, and useful cross-platform ecosystems. Based in Cameroon, I love turning complex logic challenges into elegant, clean architectural patterns.
+                </p>
+                <div class="pt-2">
+                    <a href="#ContactME" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-950/50">
+                        <span>Get In Touch</span>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Services Section Frame -->
+        <section class="hide min-h-screen flex flex-col justify-center items-center py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-blue-400 mb-4">My Core Expertises</h2>
+                <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                <!-- Service Card 1 -->
+                <div class="service1 stagger-1 bg-slate-900/60 backdrop-blur border border-blue-900/40 p-8 rounded-2xl text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:bg-slate-900/90 group">
+                    <div class="size-14 bg-blue-950 rounded-xl flex items-center justify-center text-3xl text-blue-400 border border-blue-800/60 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32">
+  <polyline points="160 368 32 256 160 144"/>
+  <polyline points="352 144 480 256 352 368"/>
+  <line x1="304" y1="96" x2="208" y2="416"/>
+</svg>
+                        
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition">HTML DEVELOPMENT</h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Structuring modern, standard-compliant semantic mockups optimized for top-tier accessibility and performance metrics.
+                    </p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service1 stagger-2 bg-slate-900/60 backdrop-blur border border-blue-900/40 p-8 rounded-2xl text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:bg-slate-900/90 group">
+                    <div class="size-14 bg-blue-950 rounded-xl flex items-center justify-center text-3xl text-blue-400 border border-blue-800/60 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32">
+  <rect x="64" y="64" width="384" height="112" rx="16" ry="16"/>
+  <circle cx="112" cy="120" r="16" fill="currentColor"/>
+  
+  <rect x="64" y="200" width="384" height="112" rx="16" ry="16"/>
+  <circle cx="112" cy="256" r="16" fill="currentColor"/>
+  
+  <rect x="64" y="336" width="384" height="112" rx="16" ry="16"/>
+  <circle cx="112" cy="392" r="16" fill="currentColor"/>
+</svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition">Laravel X TailwindCSS</h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Crafting highly stylized custom web apps built with reliable architectural MVC models coupled with clean functional utility frameworks.
+                    </p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service1 stagger-3 bg-slate-900/60 backdrop-blur border border-blue-900/40 p-8 rounded-2xl text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:bg-slate-900/90 group">
+                    <div class="size-14 bg-blue-950 rounded-xl flex items-center justify-center text-3xl text-blue-400 border border-blue-800/60 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32">
+  <rect x="128" y="48" width="256" height="416" rx="48" ry="48"/>
+  
+  <path d="M208,416h96" stroke-linecap="round"/>
+</svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition">React Native Development</h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Building premium native applications executing seamlessly across Android and iOS touchscreens utilizing fluid responsive styling paradigms.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Portfolio Section Frame -->
+        <section class="hide min-h-screen flex flex-col justify-center items-center py-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-blue-400 mb-4">Featured Work</h2>
+                <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+        
+            <div class="relative w-full">
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-4 scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-slate-900">
+                    @php
+                        $projects = [
+                            1 => [
+                                'id' => 1,
+                                'title' => 'Url Shortener',
+                                'image' => asset('images/url-shortener.png'),
+                                'description' => 'Url shortener flask application',
+                                'stack' => 'Python , Flask',
+                                'platform' => 'Responsive web application',
+                                'category' => 'web',
+                                'url' => 'https://url-shortener-y2fi.vercel.app/',
+                                'github' => 'https://github.com/ArnoldCtn/url-shortener.git',
+                            ],
+                            2 => [
+                                'id' => 2,
+                                'title' => 'React Native Crud application',
+                                'image' => asset('images/iPhone-13-PRO-localhost (1).png'),
+                                'stack' => 'React Native',
+                                'platform' => 'Mobile application',
+                                'category' => 'mobile',
+                                'github' => 'https://github.com/ArnoldCtn/React-native-crud',
+                                'description' => 'Simple crud project',
+                            ],
+                            3 => [
+                                'id' => 3,
+                                'title' => 'Todo Tkinter',
+                                'image' => asset('images/tkinter_todo.jpg'),
+                                'description' => 'Simple todo app built with python and tkinter',
+                                'stack' => 'Python , Tkinter',
+                                'platform' => 'Desktop application',
+                                'category' => 'desktop',
+                                'github' => 'https://github.com/ArnoldCtn/todo-python',
+                            ],
+                            4 => [
+                                'id' => 4,
+                                'title' => 'Weather App',
+                                'image' => asset('images/weatherappImg.jpg'),
+                                'description' => 'Weather laravel web app using weatherapi.com api',
+                                'stack' => 'Laravel, TailwindCSS',
+                                'platform' => 'Web application',
+                                'category' => 'web',
+                                'github' => 'https://github.com/ArnoldCtn/weather-laravel-app.git',
+                            ],
+                            5 => [
+                                'id' => 5,
+                                'title' => 'Country Explorer',
+                                'image' => asset('images/cmr.png'),
+                                'description' => 'Explore countries and their details.',
+                                'stack' => 'Laravel, TailwindCSS',
+                                'platform' => 'Web application',
+                                'category' => 'web',
+                                'github' => 'https://github.com/ArnoldCtn/countryExplorer.git',
+                            ],
+                            6 => [
+                                'id' => 6,
+                                'title' => 'Fitness Tracker',
+                                'image' => asset('images/fitness-tracker.jpg'),
+                                'description' => 'Mobile application for tracking fitness activities and progress.',
+                                'stack' => 'React Native, Firebase',
+                                'platform' => 'Mobile application',
+                                'category' => 'mobile',
+                                'github' => 'https://github.com/ArnoldCtn/fitness-tracker',
+                            ],
+                            7 => [
+                                'id' => 7,
+                                'title' => 'Task Management CLI',
+                                'image' => asset('images/cli-todo.jpg'),
+                                'description' => 'Command-line interface for managing tasks.',
+                                'stack' => 'Python, Argparse',
+                                'platform' => 'Desktop application',
+                                'category' => 'desktop',
+                                'github' => 'https://github.com/ArnoldCtn/cli-task-manager',
+                            ],
+                        ];
+                    @endphp
+
+                    @foreach (array_slice($projects, 0, 7) as $project)
+                        <a href="{{ route('project.show', $project['id']) }}" class="service1 group bg-slate-900/50 rounded-2xl overflow-hidden border border-blue-900/40 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1 flex flex-col snap-center shrink-0 w-80 md:w-96 lg:w-full">
+                            <div class="relative overflow-hidden aspect-video w-full bg-slate-950">
+                                <img src="{{$project['image']}}" alt="{{$project['title']}} Screenshot" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/0 transition"></div>
+                            </div>
+                            <div class="p-6 bg-slate-900/90 flex-grow flex flex-col justify-between items-center gap-4 border-t border-blue-950">
+                                <h3 class="text-xl font-bold tracking-wide text-slate-200 group-hover:text-blue-400 transition">{{$project['title']}}</h3>
+                                <span class="inline-flex items-center gap-1 text-sm text-sky-400 font-medium">
+                                    Explore Project <ion-icon name="open-outline"></ion-icon>
+                                </span>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+                @if (count($projects) > 7)
+                    <div class="mt-8 text-center">
+                        <a href="{{ route('projects.all') }}" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-base font-bold text-white rounded-full group bg-gradient-to-br from-blue-600 to-sky-500 group-hover:from-blue-600 group-hover:to-sky-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-800 transition">
+                            <span class="relative px-8 py-3.5 transition-all ease-in duration-75 bg-slate-950 rounded-full group-hover:bg-opacity-0">
+                                View All Projects
+                            </span>
+                        </a>
+                    </div>
+                @endif
+            </div>
+        </section>
+        
+        <!-- Contact Section Frame -->
+        <section id="ContactME" class="hide min-h-screen flex flex-col justify-center items-center py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-blue-400 mb-4">Contact Me</h2>
+
+                 @if(session('success'))
+    <div class="bg-green-500 text-white p-1 rounded mb-4 mx-4">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="bg-red-500 text-white p-1 rounded mb-4 mx-4">
+        {{ session('error') }}
+    </div>
+@endif
+                <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-stretch justify-center gap-12 w-full max-w-5xl">
+                <!-- Form Module Wrapper -->
+                <div class="w-full lg:w-3/5 bg-slate-900/50 backdrop-blur p-6 sm:p-10 rounded-2xl border border-blue-900/40">
+                    <form method="POST" action="{{ route('contact.submit') }}" class="space-y-5">
+                        @csrf
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Name" class="w-full p-4 rounded-xl bg-slate-950 border border-blue-900/60 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-slate-100 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Email Address</label>
+                            <input type="email" name="email" id="email" placeholder="Enter Email" class="w-full p-4 rounded-xl bg-slate-950 border border-blue-900/60 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-slate-100 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Message</label>
+                            <textarea name="messageContent" rows="5" placeholder="Your Message" class="w-full p-4 rounded-xl bg-slate-950 border border-blue-900/60 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-slate-100 transition resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold tracking-wide transition shadow-lg shadow-blue-950/50 cursor-pointer">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info Cards Contact Stack Module Wrapper -->
+                <div class="w-full lg:w-2/5 flex flex-col justify-between gap-6">
+                    <!-- Email Card -->
+                    <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
+                        <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Email</h4>
+                            <p class="text-base sm:text-lg text-slate-200 font-medium truncate">arnoldctn@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Tel Card -->
+                    <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
+                        <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Tel</h4>
+                            <p class="text-base sm:text-lg text-slate-200 font-medium">+237-696-69-29-61</p>
+                        </div>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
+                        <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Location</h4>
+                            <p class="text-base sm:text-lg text-slate-200 font-medium">Cameroon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer System Context -->
+    <footer class="w-full bg-slate-950 border-t border-blue-950 py-6 text-center text-sm text-slate-500">
+        <p>&copy; 2026 ArnoldCtn. All rights reserved.</p>
+    </footer>
+
+    <!-- Vanilla Layout & Structural Logic JavaScript Interaction Controls -->
     <script>
-        // Menu toggle for small screens
+        // Responsive Menu Toggle Script Matrix
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-        if (menuToggle && navMenu) {
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (menuToggle && navMenu && menuIcon) {
             menuToggle.addEventListener('click', () => {
-                if (navMenu.classList.contains('navbar-open')) {
-                    navMenu.classList.remove('navbar-open');
+                const isOpen = navMenu.style.left === '0px';
+                if (isOpen) {
                     navMenu.style.left = '-100%';
+                    menuIcon.setAttribute('name', 'menu-outline');
                 } else {
-                    navMenu.classList.add('navbar-open');
-                    navMenu.style.left = '0';
+                    navMenu.style.left = '0px';
+                    menuIcon.setAttribute('name', 'close-outline');
                 }
+            });
+
+            // Close responsive drawer upon clicking anchor nodes safely
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        navMenu.style.left = '-100%';
+                        menuIcon.setAttribute('name', 'menu-outline');
+                    }
+                });
             });
         }
 
-        // Reveal on scroll using IntersectionObserver
+        // Reveal viewframes fluidly on scroll behaviors via IntersectionObserver API
         document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.hide');
-            const io = new IntersectionObserver((entries) => {
+            const elementsToReveal = document.querySelectorAll('.hide');
+            const observerOptions = {
+                root: null,
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show');
+                        // Optional: unobserve if animation is execution-once criteria
+                        // observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, observerOptions);
 
-            items.forEach(i => io.observe(i));
+            elementsToReveal.forEach(element => revealObserver.observe(element));
         });
     </script>
 
 </body>
-
-
 </html>
-
-{{-- <ion-icon name="close-outline"></ion-icon>
-<ion-icon name="menu-outline"></ion-icon> --}}
-
