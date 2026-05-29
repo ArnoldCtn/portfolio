@@ -51,7 +51,7 @@
     
 </head>
 
-<body class="bg-gradient-to-b from-slate-950 via-blue-700 to-slate-500 sm:h-screen text-slate-100 min-h-screen selection:bg-blue-600 selection:text-white">
+<body class="bg-gradient-to-b from-slate-950 via-blue-700 to-slate-500 md:h-screen text-slate-100 min-h-screen selection:bg-blue-600 selection:text-white">
 
     <!-- Sticky Navigation Bar -->
     <header id="navbar" class="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-md border-b border-blue-900/40 transition-all duration-300">
@@ -80,7 +80,7 @@
                 <!-- User Profile Headshot Container -->
                 <div class="relative group">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-sky-500 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
-                    <img src="{{asset('images/clint.jpg')}}" alt="Avatar" class="relative size-10 rounded-full object-cover border border-slate-900 cursor-pointer">
+                    <img src="{{asset('images/me.jpg')}}" alt="Avatar" class="relative size-10 rounded-full object-cover border border-slate-900 cursor-pointer">
                 </div>
 
                 <!-- Ionicons Driven Hamburger Trigger -->
@@ -124,9 +124,12 @@
             <!-- Image Frame -->
             <div class="about1 w-full max-w-md lg:max-w-lg relative group shrink-0">
                 <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600 to-sky-500 rounded-3xl blur opacity-40 group-hover:opacity-70 transition duration-500"></div>
-                <div class="relative overflow-hidden rounded-2xl border border-blue-900/50">
-                    <img src="{{asset('images/yohan.jpg')}}" alt="About Me Workstation" class="w-full h-[320px] sm:h-[400px] object-cover transform transition-transform duration-700 group-hover:scale-105">
-                </div>
+               <div class="relative overflow-hidden rounded-2xl border border-blue-900/50 bg-slate-900/10 flex items-center justify-center">
+    <img src="{{ asset('images/me.jpg') }}" 
+         alt="About Me Workstation" 
+         class="w-full h-auto max-h-[500px] object-contain transform transition-transform duration-700 hover:scale-105"
+         loading="eager">
+</div>
             </div>
             
             <!-- Text Content Frame -->
@@ -255,7 +258,7 @@
                             4 => [
                                 'id' => 4,
                                 'title' => 'Weather App',
-                                'image' => asset('images/weatherappImg.jpg'),
+                                'image' => asset('images/weatherappImg.png'),
                                 'description' => 'Weather laravel web app using weatherapi.com api',
                                 'stack' => 'Laravel, TailwindCSS',
                                 'platform' => 'Web application',
@@ -274,24 +277,15 @@
                             ],
                             6 => [
                                 'id' => 6,
-                                'title' => 'Fitness Tracker',
-                                'image' => asset('images/fitness-tracker.jpg'),
-                                'description' => 'Mobile application for tracking fitness activities and progress.',
-                                'stack' => 'React Native, Firebase',
-                                'platform' => 'Mobile application',
-                                'category' => 'mobile',
-                                'github' => 'https://github.com/ArnoldCtn/fitness-tracker',
-                            ],
-                            7 => [
-                                'id' => 7,
-                                'title' => 'Task Management CLI',
-                                'image' => asset('images/cli-todo.jpg'),
-                                'description' => 'Command-line interface for managing tasks.',
-                                'stack' => 'Python, Argparse',
+                                'title' => 'Library Management',
+                                'image' => asset('images/lib.jpg'),
+                                'description' => 'Desktop application for managing library resources.',
+                                'stack' => 'python, Tkinter',
                                 'platform' => 'Desktop application',
                                 'category' => 'desktop',
-                                'github' => 'https://github.com/ArnoldCtn/cli-task-manager',
+                                'github' => 'https://github.com/ArnoldCtn/library-management.git',
                             ],
+                            
                         ];
                     @endphp
 

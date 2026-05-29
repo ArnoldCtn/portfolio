@@ -26,9 +26,12 @@
         <main class="relative mx-auto max-w-6xl px-6 pb-20 sm:px-10">
             <section class="section-fade mt-10 rounded-[2.5rem] border border-white/15 bg-white/10 p-6 shadow-2xl shadow-slate-950/20 backdrop-blur-xl md:p-10">
                 <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
-                    <div id="project-image" class="overflow-hidden rounded-[2rem] border border-white/15  shadow-xl">
-                        <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" class="max-h-[500px] min-h-[320px] w-full object-cover" />
-                    </div>
+                    <div id="project-image" class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/40 backdrop-blur-sm shadow-xl w-full h-auto max-h-[600px] flex items-center justify-center">
+    <img src="{{ $project['image'] }}" 
+         alt="{{ $project['title'] }}" 
+         class="w-full h-auto max-h-[600px] object-contain transition-transform duration-700 ease-out hover:scale-105"
+         loading="eager">
+</div>
                     
                     <div class="space-y-6 text-white">
                         <span class="inline-flex rounded-full bg-sky-100/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.32em] text-sky-100">Featured Project</span>
