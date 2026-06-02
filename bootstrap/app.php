@@ -11,7 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Trust Render's reverse proxy so HTTPS / client IPs are detected correctly
+        $middleware->trustProxies(at: env('TRUST_PROXIES', '*'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
