@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Build script for Render's native PHP environment
-# (Only used if you deploy WITHOUT the Dockerfile)
 
 set -euo pipefail
 
@@ -13,7 +12,10 @@ npm ci || npm install
 echo "==> Building Vite assets"
 npm run build
 
-echo "==> Clearing & caching Laravel config"
+echo "==> Running database migrations"
+php artisan migrate --force --no-interaction
+
+echo "==> Caching configuration"
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
