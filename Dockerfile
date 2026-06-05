@@ -42,6 +42,9 @@ RUN composer install --no-dev --no-interaction --no-progress --optimize-autoload
 RUN npm ci || npm install
 RUN npm run build
 
+# Run migrations to create database and tables
+RUN php artisan migrate --force --no-interaction
+
 # Create storage directories
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views
 RUN chmod -R 775 storage bootstrap/cache
