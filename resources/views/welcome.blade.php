@@ -146,7 +146,7 @@
                 <div class="pt-2">
                     <a href="#ContactME" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-950/50">
                         <span>Get In Touch</span>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"><path d="M268 112l144 144m0 0l-144 144m144-144H100"/></svg>
                     </a>
                 </div>
             </div>
@@ -299,7 +299,7 @@
                             <div class="p-6 bg-slate-900/90 flex-grow flex flex-col justify-between items-center gap-4 border-t border-blue-950">
                                 <h3 class="text-xl font-bold tracking-wide text-slate-200 group-hover:text-blue-400 transition">{{$project['title']}}</h3>
                                 <span class="inline-flex items-center gap-1 text-sm text-sky-400 font-medium">
-                                    Explore Project <ion-icon name="open-outline"></ion-icon>
+                                    Explore Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"><path d="M400 64H112a48 48 0 00-48 48v288a48 48 0 0048 48h288a48 48 0 0048-48V112a48 48 0 00-48-48z"/><path d="M336 176L224 288m0 0l-48-48m48 48l48-48"/></svg>
                                 </span>
                             </div>
                         </a>
@@ -317,7 +317,7 @@
                             <div class="p-6 bg-slate-900/90 flex-grow flex flex-col justify-between items-center gap-4 border-t border-blue-950">
                                 <h3 class="text-lg font-bold tracking-wide text-slate-200 group-hover:text-blue-400 transition line-clamp-2">{{$project['title']}}</h3>
                                 <span class="inline-flex items-center gap-1 text-sm text-sky-400 font-medium">
-                                    Explore Project <ion-icon name="open-outline"></ion-icon>
+                                    Explore Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"><path d="M400 64H112a48 48 0 00-48 48v288a48 48 0 0048 48h288a48 48 0 0048-48V112a48 48 0 00-48-48z"/><path d="M336 176L224 288m0 0l-48-48m48 48l48-48"/></svg>
                                 </span>
                             </div>
                         </a>
@@ -384,7 +384,7 @@
                     <!-- Email Card -->
                     <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
                         <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
-                            <ion-icon name="mail-outline"></ion-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"><rect x="48" y="64" width="416" height="384" rx="32" ry="32"/><path d="M112 144l144 112 144-112"/></svg>
                         </div>
                         <div class="overflow-hidden">
                             <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Email</h4>
@@ -395,18 +395,19 @@
                     <!-- Tel Card -->
                     <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
                         <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
-                            <ion-icon name="call-outline"></ion-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"><path d="M391 480c-19.52 0-46.94-7.06-86-24-43.4-19.47-86.4-47.6-127.3-88.5s-69-83.9-88.5-127.3c-17-39.08-24-66.48-24-86C65 140.24 82.24 123 102.66 123c6.93 0 13.89.57 20.82 2.23 8.28 1.92 16.83 6.61 23.28 13.65l30 45.08a32.05 32.05 0 003.06 36.78l-24.27 24.27c25.2 39.2 57.85 71.86 97 97l24.27-24.27a32 32 0 0136.73 3.06l45.07 30.06c7 6.4 11.7 15 13.62 23.27 1.66 6.93 2.24 13.89 2.24 20.82C489 429.76 471.76 447 451.34 447z"/></svg>
                         </div>
                         <div>
                             <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Tel</h4>
                             <p class="text-base sm:text-lg text-slate-200 font-medium">+237-696-69-29-61</p>
+                            <p class="text-base sm:text-lg text-slate-200 font-medium">+237-675-82-87-11</p>
                         </div>
                     </div>
 
                     <!-- Location Card -->
                     <div class="flex items-center gap-5 p-6 bg-slate-900/40 border border-blue-900/30 rounded-2xl h-full">
                         <div class="text-3xl text-blue-400 bg-blue-950/60 p-4 rounded-xl border border-blue-900/50 flex items-center justify-center">
-                            <ion-icon name="location-outline"></ion-icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"><path d="M256 48c-79.53 0-144 61.79-144 137.6 0 72.211 58.225 155.634 144 224 85.775-68.366 144-151.789 144-224C400 109.79 335.53 48 256 48z"/><circle cx="256" cy="185.5" r="40" fill="currentColor"/></svg>
                         </div>
                         <div>
                             <h4 class="text-sm font-bold uppercase text-slate-400 tracking-wider">Location</h4>
