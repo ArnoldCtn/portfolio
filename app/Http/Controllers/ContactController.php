@@ -19,8 +19,6 @@ class ContactController extends Controller
                 'email' => 'email',
                 'messageContent' => 'min:5',
             ]);
-            // Get validated data
-            $validated = $request->validated();
             
             // Send email
             Mail::to('ctnarnold@gmail.com')->send(
@@ -34,9 +32,9 @@ class ContactController extends Controller
             return back()->with('success', 'Thank you for your message! I will get back to you soon.');
 
         } catch (\Exception $e) {
-            Log::error('Contact form error: ' . $e->getMessage());
+            Log::error('Contact form email error: ' . $e->getMessage(), ['exception' => (string)$e]);
             
-            return back()->with('error', 'An error occurred while sending the message. Please try again.');
+            return back()->with('error', 'Email error: ' . $e->getMessage());
         }
     }
 }
