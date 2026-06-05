@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
 use App\Mail\ContactFormMail;
-use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
@@ -13,16 +12,13 @@ class ContactController extends Controller
 {
     public function submit(ContactFormRequest $request)
     {
-
-         $validated =$request->validate([
+        try {
+            // Validate and get data
+            $validated = $request->validate([
                 'name' => 'min:3',
                 'email' => 'email',
                 'messageContent' => 'min:5',
             ]);
-
-            Message::create($validated);
-            
-        try {
             // Get validated data
             $validated = $request->validated();
             
