@@ -45,9 +45,11 @@ RUN npm run build
 # Run migrations to create database and tables
 RUN php artisan migrate --force --no-interaction
 
-# Create storage directories
+# Create storage directories and ensure writable permissions
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views
 RUN chmod -R 775 storage bootstrap/cache
+RUN touch storage/database.sqlite
+RUN chmod 666 storage/database.sqlite
 
 # Expose port
 EXPOSE 80
