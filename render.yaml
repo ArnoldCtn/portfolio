@@ -15,7 +15,9 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: https://portfolio.onrender.com
+        value: https://portfolio-dmex.onrender.com
+      - key: ASSET_URL
+        value: https://portfolio-dmex.onrender.com
       - key: LOG_CHANNEL
         value: stderr
       - key: LOG_STACK
